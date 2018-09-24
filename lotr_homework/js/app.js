@@ -87,7 +87,7 @@ const makeHobbits = () => {
     newHobbits.push(hobbits[i]);
     newHobbits = newHobbits.toString(" ");
      $('body').append('<ul = hobbits></ul>');
-     $('ul').append('<li/>').text(`${newHobbits}`);
+     $('ul').append('<li/>').text(`#${newHobbits}`);
   }
   });
   console.log('Make hobbits');
@@ -110,6 +110,10 @@ makeMiddleEarth();
 // Chapter 3
 // ============
 const keepItSecretKeepItSafe = () => {
+
+  const ring = document.createElement('<div =the-ring/>');
+    document.getElementById('#Frodo Baggins').appendChild(ring);
+
 
   // 1. create an empty div with an id of 'the-ring'
 
