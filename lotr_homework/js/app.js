@@ -85,7 +85,7 @@ const makeHobbits = () => {
   $('#2').on('click', () => {
   for(let i = 0; i < hobbits.length; i++) {
     newHobbits.push(hobbits[i]);
-    newHobbits = newHobbits.toString(" ");
+    newHobbits.split(" ");
      $('body').append('<ul = hobbits></ul>');
      $('ul').append('<li/>').text(`#${newHobbits}`);
   }
@@ -132,6 +132,15 @@ const keepItSecretKeepItSafe = () => {
 // Chapter 4
 // ============
 const makeBaddies = () => {
+  let newBaddies = [];
+  for(let i = 0; i <= baddies.length; i++){
+    newBaddies.push(baddies[i]);
+    newBaddies.split(" ");
+    $('.Mordor').append('<ul = baddies></ul>');
+    $('#baddies').text(`#${newBaddies}`);
+
+
+  }
 
   // 1. display an unordered list of baddies in Mordor
 
@@ -147,6 +156,7 @@ const makeBaddies = () => {
 // Chapter 5
 // ============
 const makeBuddies = () => {
+  
 
   // 1. create an aside tag and append it to middle-earth below mordor
 
