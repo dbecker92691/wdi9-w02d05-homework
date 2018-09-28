@@ -40,37 +40,28 @@ const lands = [
 // ============
 // Chapter 1
 // ============
-const makeMiddleEarth = () => {
 
-const middleEarth = [];
-$('#1').on('click', () => {
-  
-  for(let i = 0; i <= lands.length; i++) {
-    middleEarth.push(lands[i]);
-    $('body').append(`<h1 id = ${middleEarth[i]}></h1>`);
-    
-  } 
-});
+
 
   
   // HINT: Make a console.log for each of your functions to make sure that, when you click, the correct function is being called!
 
+const makeMiddleEarth = () => {
 
+  const $middleEarth = $('<section/>');
+  $middleEarth.attr('id', 'middle-earth');
 
-  // 1. create a section tag with an id of middle-earth
+$('body').append($middleEarth);
 
-  // 2. append the section to the body of the DOM.
-
-  // 3. use a for loop to iterate over the lands array that does the following:
-
-  //   3a. creates an article tag (there should be one for each land when the loop is done)
-
-  //   3b. gives each land article an `id` tag of the corresponding land name
-
-  //   3c. includes an h1 with the name of the land inside each land article
-
-  //   3d. appends each land to the middle-earth section
+for(let i = 0; i < lands.length; i++) {
+  const $land = $('<article/>')
+  $land.attr('id', lands[i]);
+  $land.append(`<h1>${lands[i]}</h1>`);
+  $middleEarth.append($land);
+  
 }
+}
+
 
 
 
@@ -80,28 +71,17 @@ $('#1').on('click', () => {
 // ============
 // Chapter 2
 // ============
-const makeHobbits = () => {
-  let newHobbits = [];
-  $('#2').on('click', () => {
-  for(let i = 0; i < hobbits.length; i++) {
-    newHobbits.push(hobbits[i]);
-    newHobbits.split(" ");
-     $('body').append('<ul = hobbits></ul>');
-     $('ul').append('<li/>').text(`#${newHobbits}`);
-  }
+
+
+const makeHobbits = () =>{
+  const $hobbitList = $('<ul class="hobbits"></ul>')
+  hobbits.forEach((hobbit)=>{
+    const $hobbit = $('<li/>').text(hobbit).addClass('hobbit');
+    $hobbit.appendTo($hobbitList)
+    console.log(hobbit)
   });
-  console.log('Make hobbits');
-
-  // 1. display an unordered list of the hobbits in the shire.
-
-  // 2. give each hobbit a class of "hobbit"
-
-  // hint: create a 'ul' outside the loop upon which to append the 'li's
-
-  // hint: get 'The-Shire' by using its id
-
-};
-makeMiddleEarth();
+  $('#The-Shire').append($hobbitList);
+}
 
 // COMMIT YOUR WORK
 // The commit message should read: "Chapter 2 complete - Made the Hobbits".
@@ -109,21 +89,14 @@ makeMiddleEarth();
 // ============
 // Chapter 3
 // ============
-const keepItSecretKeepItSafe = () => {
+ const keepItSecretKeepItSafe = () => {
 
-  const ring = document.createElement('<div =the-ring/>');
-    document.getElementById('#Frodo Baggins').appendChild(ring);
+const $ring = $('div').attr('id', 'the-ring');
+  const $frodo = $('.hobbit:contains("frodo")')
+$frodo.append($ring)
 
 
-  // 1. create an empty div with an id of 'the-ring'
-
-  // 2. add the ring as a child of Frodo
-
-  // hint: Frodo does not have an id, but there is a command to retrieve all elements with a certain class. This should give you an array for you to access . . .
-
-  // when you think you have given Frodo the ring, check in your Elements tab
-
-};
+ }
 
 // COMMIT YOUR WORK
 // The commit message should read: "Chapter 3 complete - Made the ring and gave it to Frodo".
@@ -132,21 +105,15 @@ const keepItSecretKeepItSafe = () => {
 // Chapter 4
 // ============
 const makeBaddies = () => {
-  let newBaddies = [];
-  for(let i = 0; i <= baddies.length; i++){
-    newBaddies.push(baddies[i]);
-    newBaddies.split(" ");
-    $('.Mordor').append('<ul = baddies></ul>');
-    $('#baddies').text(`#${newBaddies}`);
+ 
+  const $baddyList = $('<ul class="baddies"></ul>')
+  baddies.forEach((baddy)=>{
+    const $baddy = $('<li/>').text(baddy).addClass('baddy');
+    $baddy.appendTo($baddyList)
 
+  });
+  $('#Mordor').append($baddyList);
 
-  }
-
-  // 1. display an unordered list of baddies in Mordor
-
-  // 2. give each of the baddies a class of "baddy"
-
-  // 3. remember to append them to Mordor
 };
 
 // COMMIT YOUR WORK
@@ -156,21 +123,17 @@ const makeBaddies = () => {
 // Chapter 5
 // ============
 const makeBuddies = () => {
-  $('.middleEarth').prepend('<div = buddyList>');
-  let newBuddies = [];
-  for (let i = 0; i <= buddies.length; i++) {
-    newBuddies.push(buddies[i]);
-    newBuddies.split(" ");
-    $('#buddyList').append('<ul/>');
-    $('ul').append(`<li>${newBuddies}</li>`);
-  }
-  
 
-  // 1. create an aside tag and append it to middle-earth below mordor
+  const $buddyAside = $('<asside class="buddies"></aside>')
+  const $buddyList = $('<ul class="buddies"></ul>')
+  $('#middle-earth').append($buddyAside);
+  buddies.forEach((buddy)=>{
+    const $buddy = $('<li/>').text(buddy).addClass('buddy');
+    $buddy.appendTo($buddyList);
 
-  // 2. display an unordered list of buddies in the aside
-
-  // 3. give each of the buddies a class of "buddy"
+  })
+$buddyAside.append($buddyList);
+$('#middle-earth').append($buddyAside);
 
 };
 
@@ -181,10 +144,7 @@ const makeBuddies = () => {
 // Chapter 6
 // ============
 const leaveTheShire = () => {
-
-  // 1. grab the hobbits (the ul in which they reside) and move them to Rivendell
-
-  // hint: the hobbits ul is a childNode of The-Shire-- there is way to get a list of childNodes
+  $('.hobbit').parent().appendTo('#middle-earth #Rivendell');
 
 };
 
@@ -195,6 +155,7 @@ const leaveTheShire = () => {
 // Chapter 7
 // ============
 const beautifulStranger = () => {
+  $('.buddy:contains("Strider")').text('Aragorn');
 
   // 1. change the buddy 'Strider' textnode to "Aragorn"
 
@@ -209,6 +170,13 @@ const beautifulStranger = () => {
 // Chapter 8
 // ============
 const forgeTheFellowShip = () => {
+
+  const $theFellowShip = $('<div/>');
+  $theFellowShip.attr('id', 'the-fellowship');
+  $theFellowShip.append('<h1>The Fellowship</h1>');
+  $theFellowShip.append($('.hobbits'))
+  $theFellowShip.append($('.buddies'))
+  $('#middle-earth').append($theFellowShip)
 
   // 1. create a new div with an id 'the-fellowship'
 
@@ -227,6 +195,7 @@ const forgeTheFellowShip = () => {
 // Chapter 9
 // ============
 const theBalrog = () => {
+  $('.buddy:contains("Gandalf the Grey")').text('Gandalf the White').addClass("the-white");
 
   // 1. change the 'Gandalf' textNode to 'Gandalf the White'
 
@@ -244,6 +213,10 @@ const theBalrog = () => {
 // ============
 const hornOfGondor = () => {
 
+  alert("The Horn of Gondor has been blown");
+  $('.buddy:contains("Boromir")').css("text-decoration", "line-through")
+  $('.baddy:contains("Uruk-hai")').remove();
+
   // 1. create a pop-up alert that the horn of gondor has been blown
 
   // 2. Boromir's been killed by the Uruk-hai! Put a linethrough on Boromir's name
@@ -259,6 +232,9 @@ const hornOfGondor = () => {
 // Chapter 11
 // ============
 const itsDangerousToGoAlone = () => {
+  $('#Mordor').append($('.hobbit:contains("Sam"), .hobbit:contains("Frodo")'))
+  $('#mordor').append('<div id=mount-doom></div>')
+
 
   // 1. take Frodo and Sam out of the fellowship and move them to Mordor (they don't need to be inside a ul in Mordor)
 
@@ -273,7 +249,9 @@ const itsDangerousToGoAlone = () => {
 // Chapter 12
 // ============
 const weWantsIt = () => {
-
+$('#Mordor').append('<div id= gollum></div>')
+$('#gollum').append($('#the-ring'))
+$('#mount-doom').append($('#gollum'))
   // 1. Create a div with an id of 'gollum' and add it to Mordor
 
   // 2. Move the ring from Frodo and give it to Gollum
@@ -289,6 +267,9 @@ const weWantsIt = () => {
 // Chapter 13
 // ============
 const thereAndBackAgain = () => {
+  $('#gollum').remove();
+  $('#baddies').remove();
+  $('#hobbits').appendTo($('#The-Shire'));
 
   // 1. remove Gollum and the Ring from the DOM
 
@@ -324,5 +305,18 @@ $(() => {
   $('#11').on('click', itsDangerousToGoAlone);
   $('#12').on('click', weWantsIt);
   $('#13').on('click', thereAndBackAgain);
-
-});
+  $('#1').click();
+  $('#2').click();
+  $('#3').click();
+  $('#4').click();
+  $('#5').click();
+  $('#6').click();
+  $('#7').click();
+  $('#8').click();
+  $('#9').click();
+  $('#10').click();
+  $('#11').click();
+  $('#12').click();
+  $('#13').click();
+  
+})
